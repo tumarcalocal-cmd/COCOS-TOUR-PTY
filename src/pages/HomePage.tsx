@@ -10,6 +10,8 @@ import {
   MapPin,
   ExternalLink,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Language, PageRoute, VideoItem } from '../types';
 import { TRANSLATIONS } from '../data/translations';
@@ -23,6 +25,238 @@ interface HomePageProps {
   onOpenInquiry: (experiencePreselect?: string) => void;
   onPlayVideo: (video: VideoItem) => void;
 }
+
+const ISLAND_PHOTOS = [
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque-1.jpg',
+    title: 'Paisajes de Isla Otoque',
+    caption: '«Descubre la belleza natural de Isla Otoque.»',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque-2.jpg',
+    title: 'Rincones de Isla Otoque',
+    caption: '«Paisajes y rincones que hacen especial esta isla.»',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque-oriente.jpg',
+    title: 'Otoque Oriente',
+    caption: '«Una comunidad llena de historia y tradición.»',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque-occidente.jpg',
+    title: 'Otoque Occidente',
+    caption: '«Conoce la otra comunidad de Isla Otoque.»',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/grua-minera.jpg',
+    title: 'Grúa minera de Isla Bona',
+    caption: '«Vestigios de la antigua actividad minera de magnetita en Isla Bona.»',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/guia-turistica.jpg',
+    title: 'Experiencia turística',
+    caption: '«Descubre nuestras islas, sus paisajes y su historia.»',
+  },
+];
+
+const extendedPhotos = [...ISLAND_PHOTOS, ...ISLAND_PHOTOS, ...ISLAND_PHOTOS];
+
+const IslandPhotosCarousel: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(ISLAND_PHOTOS.length);
+  const [isTransitioning, setIsTransitioning] = React.useState(true);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const [visibleCount, setVisibleCount] = React.useState(3);
+  const pauseTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const triggerPause = () => {
+    setIsPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 5000);
+  };
+
+  React.useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isPaused || prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleNext = () => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const handleDotClick = (index: number) => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex(ISLAND_PHOTOS.length + index);
+  };
+
+  const handleTransitionEnd = () => {
+    if (currentIndex >= ISLAND_PHOTOS.length * 2) {
+      setIsTransitioning(false);
+      setCurrentIndex((prev) => prev - ISLAND_PHOTOS.length);
+    } else if (currentIndex < ISLAND_PHOTOS.length) {
+      setIsTransitioning(false);
+      setCurrentIndex((prev) => prev + ISLAND_PHOTOS.length);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 30);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 50) {
+        handleNext();
+      } else if (diff < -50) {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const activeDotIndex = currentIndex % ISLAND_PHOTOS.length;
+
+  return (
+    <div className="w-full">
+      {/* Header */}
+      <div className="max-w-3xl mb-10">
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Islas del Pacífico: Naturaleza, Cultura e Historia
+        </h3>
+        <p className="text-base sm:text-lg text-slate-300 mt-2 leading-relaxed">
+          «Descubre paisajes, comunidades, historia y experiencias auténticas de nuestras islas.»
+        </p>
+      </div>
+
+      {/* Carousel Container */}
+      <div
+        className="relative overflow-hidden group py-2"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          onTransitionEnd={handleTransitionEnd}
+          className={`flex -mx-3 ${
+            isTransitioning
+              ? 'transition-transform duration-500 ease-in-out'
+              : 'transition-none'
+          }`}
+          style={{
+            transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+          }}
+        >
+          {extendedPhotos.map((photo, idx) => (
+            <div
+              key={idx}
+              className="shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3 flex flex-col justify-between"
+            >
+              {/* Photo Card */}
+              <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-slate-800 border border-slate-700/60 shadow-xl group/card">
+                <img
+                  src={photo.url}
+                  alt={photo.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                />
+              </div>
+
+              {/* Title & Caption BELOW Image */}
+              <div className="mt-4 space-y-1">
+                <h4 className="text-lg font-bold text-white leading-snug">
+                  {photo.title}
+                </h4>
+                <p className="text-sm text-[#12A8A3] leading-relaxed font-medium">
+                  {photo.caption}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={handlePrev}
+          aria-label="Fotografía anterior"
+          className="absolute left-2 top-1/3 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/90 hover:bg-[#12A8A3] text-white border border-slate-700 hover:border-[#12A8A3] flex items-center justify-center transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 shadow-2xl cursor-pointer z-20 active:scale-95"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        <button
+          onClick={handleNext}
+          aria-label="Fotografía siguiente"
+          className="absolute right-2 top-1/3 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/90 hover:bg-[#12A8A3] text-white border border-slate-700 hover:border-[#12A8A3] flex items-center justify-center transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 shadow-2xl cursor-pointer z-20 active:scale-95"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex items-center justify-center gap-2 mt-8">
+        {ISLAND_PHOTOS.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Ver fotografía ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all cursor-pointer ${
+              idx === activeDotIndex ? 'w-8 bg-[#12A8A3]' : 'w-2.5 bg-slate-700 hover:bg-slate-500'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const HomePage: React.FC<HomePageProps> = ({
   lang,
@@ -259,13 +493,21 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Card 1: Islas y Aventuras */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200 transition-all flex flex-col justify-between group">
               <div>
-                <div className="p-6 bg-[#092E3B] text-white">
-                  <span className="text-xs font-bold uppercase text-[#12A8A3] tracking-wider block">
-                    Ruta /islas
-                  </span>
-                  <h3 className="text-xl font-bold leading-tight mt-1">
-                    {lang === 'es' ? 'Islas y Aventuras' : 'Islands & Adventures'}
-                  </h3>
+                <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
+                  <img
+                    src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque.jpg"
+                    alt="Islas y Aventuras"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-5 right-5 text-white">
+                    <span className="text-xs font-bold uppercase text-[#12A8A3] tracking-wider block">
+                      Ruta /islas
+                    </span>
+                    <h3 className="text-xl font-bold leading-tight">
+                      {lang === 'es' ? 'Islas y Aventuras' : 'Islands & Adventures'}
+                    </h3>
+                  </div>
                 </div>
 
                 <div className="p-6 space-y-4">
@@ -406,28 +648,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 5. GALERÍA DESTACADA DE VIDEOS */}
       <section className="py-20 sm:py-24 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
-              {t.videos.sectionKicker}
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight mt-1">
-              {t.videos.title}
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 mt-2">
-              {t.videos.subtitle}
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredVideos.map((video) => (
-              <VideoCard
-                key={video.id}
-                video={video}
-                lang={lang}
-                onPlay={onPlayVideo}
-              />
-            ))}
-          </div>
+
+
+
+          {/* Carrusel automático de 6 fotografías reales de las islas */}
+          <IslandPhotosCarousel />
         </div>
       </section>
 
