@@ -337,7 +337,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </button>
             </div>
 
-            {/* Direct Phone & Video Link */}
+            {/* Direct Phone */}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-200">
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -349,14 +349,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <strong className="font-mono text-base">{BUSINESS_INFO.phone}</strong>
                 </span>
               </a>
-              <span aria-hidden="true" className="text-white/40 hidden sm:inline">|</span>
-              <button
-                onClick={() => onPlayVideo(heroVideo)}
-                className="inline-flex items-center gap-2 text-[#12A8A3] hover:text-white transition-colors cursor-pointer font-semibold"
-              >
-                <Play className="w-4 h-4 fill-current" />
-                <span>{lang === 'es' ? 'Ver registro audiovisual' : 'Watch video overview'}</span>
-              </button>
             </div>
           </div>
         </div>

@@ -9,6 +9,8 @@ import {
   Sun,
   Wind,
   ExternalLink,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Language, PageRoute, VideoItem } from '../types';
 import { TRANSLATIONS } from '../data/translations';
@@ -22,6 +24,185 @@ interface RestaurantPageProps {
   onOpenInquiry: (experiencePreselect?: string) => void;
   onPlayVideo: (video: VideoItem) => void;
 }
+
+const RESTAURANT_IMAGES = [
+  {
+    url: IMAGES.restaurant,
+    alt: "Instalaciones y piscina de Coco's Pub Bar Restaurante",
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/plato-1.jpg',
+    alt: 'Gastronomía marina - Plato 1',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/plato-2.jpg',
+    alt: 'Gastronomía marina - Plato 2',
+  },
+  {
+    url: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/plato-3.jpg',
+    alt: 'Gastronomía marina - Plato 3',
+  },
+];
+
+const extendedRestaurantImages = [
+  ...RESTAURANT_IMAGES,
+  ...RESTAURANT_IMAGES,
+  ...RESTAURANT_IMAGES,
+];
+
+const RestaurantImageCarousel: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(RESTAURANT_IMAGES.length);
+  const [isTransitioning, setIsTransitioning] = React.useState(true);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const pauseTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
+
+  const triggerPause = () => {
+    setIsPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 5000);
+  };
+
+  React.useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isPaused || prefersReducedMotion) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handleNext = () => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  const handleDotClick = (index: number) => {
+    triggerPause();
+    setIsTransitioning(true);
+    setCurrentIndex(RESTAURANT_IMAGES.length + index);
+  };
+
+  const handleTransitionEnd = () => {
+    if (currentIndex >= RESTAURANT_IMAGES.length * 2) {
+      setIsTransitioning(false);
+      setCurrentIndex((prev) => prev - RESTAURANT_IMAGES.length);
+    } else if (currentIndex < RESTAURANT_IMAGES.length) {
+      setIsTransitioning(false);
+      setCurrentIndex((prev) => prev + RESTAURANT_IMAGES.length);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 30);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 50) {
+        handleNext();
+      } else if (diff < -50) {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const activeDotIndex = currentIndex % RESTAURANT_IMAGES.length;
+
+  return (
+    <div className="space-y-4">
+      <div
+        className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3 group"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          onTransitionEnd={handleTransitionEnd}
+          className={`flex h-full w-full ${
+            isTransitioning
+              ? 'transition-transform duration-500 ease-in-out'
+              : 'transition-none'
+          }`}
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {extendedRestaurantImages.map((img, idx) => (
+            <div key={idx} className="shrink-0 w-full h-full relative">
+              <img
+                src={img.url}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={handlePrev}
+          aria-label="Fotografía anterior"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 hover:bg-[#12A8A3] text-white border border-slate-700/80 flex items-center justify-center transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 shadow-xl cursor-pointer z-10 active:scale-95"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <button
+          onClick={handleNext}
+          aria-label="Fotografía siguiente"
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 hover:bg-[#12A8A3] text-white border border-slate-700/80 flex items-center justify-center transition-all opacity-90 sm:opacity-0 sm:group-hover:opacity-100 shadow-xl cursor-pointer z-10 active:scale-95"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex items-center justify-center gap-2">
+        {RESTAURANT_IMAGES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Ver imagen ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all cursor-pointer ${
+              idx === activeDotIndex ? 'w-8 bg-[#12A8A3]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const RestaurantPage: React.FC<RestaurantPageProps> = ({
   lang,
@@ -183,17 +364,8 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
               </div>
             </div>
 
-            <div className="lg:col-span-6 space-y-6">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3">
-                <img
-                  src={IMAGES.restaurant}
-                  alt="Instalaciones de Coco's Pub Bar Restaurante"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-
+            <div className="lg:col-span-6">
+              <RestaurantImageCarousel />
             </div>
           </div>
         </div>
