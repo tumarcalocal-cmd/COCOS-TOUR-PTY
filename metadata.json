@@ -1,0 +1,6 @@
+{
+  "name": "Cocos Tour PTY | Turismo en Panamá",
+  "description": "Sitio web oficial de Cocos Tour PTY en Punta Chame, Panamá Oeste. Excursiones a Isla Otoque, Isla Bona, avistamiento de delfines y ballenas, snorkel y Coco's Pub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
