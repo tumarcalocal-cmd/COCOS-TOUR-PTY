@@ -25,26 +25,26 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           {/* Column 1: Brand & Identity */}
           <div className="space-y-4">
-            <div className="text-xl font-bold tracking-tight text-white">
+            <div className="text-2xl font-bold tracking-tight text-white">
               COCOS TOUR <span className="text-[#12A8A3]">PTY</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               {t.footer.description}
             </p>
             <div className="pt-2">
-              <span className="text-[11px] text-[#C9A878] font-semibold block mb-1">
+              <span className="text-xs text-[#C9A878] font-bold uppercase tracking-wider block mb-1">
                 {lang === 'es' ? 'Guía local y anfitrión:' : 'Local guide & host:'}
               </span>
-              <p className="text-sm font-semibold text-white">{BUSINESS_INFO.guideName}</p>
+              <p className="text-base font-bold text-white">{BUSINESS_INFO.guideName}</p>
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
               {t.footer.quickLinks}
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <button
                   onClick={() => onNavigate('/')}
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li className="pt-2">
                 <button
                   onClick={onOpenInquiry}
-                  className="text-[#12A8A3] font-semibold hover:underline"
+                  className="text-[#12A8A3] font-bold hover:underline"
                 >
                   {t.nav.inquireBtn} →
                 </button>
@@ -90,16 +90,16 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 3: Contact Details */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
               {t.footer.contactInfo}
             </h4>
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3.5 text-sm">
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
                 className="flex items-center gap-2 hover:text-white transition-colors group"
               >
                 <Phone className="w-4 h-4 text-[#12A8A3] shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="tabular-nums font-mono">{BUSINESS_INFO.phone}</span>
+                <span className="tabular-nums font-mono font-medium">{BUSINESS_INFO.phone}</span>
               </a>
 
               <a
@@ -113,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({
               </a>
 
               <div className="flex items-start gap-2 pt-1 text-slate-300">
-                <MapPin className="w-4 h-4 text-[#12A8A3] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#12A8A3] shrink-0 mt-1" />
                 <span className="leading-snug">{BUSINESS_INFO.address}</span>
               </div>
             </div>
@@ -121,17 +121,14 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 4: Google Maps & Verification */}
           <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
               {lang === 'es' ? 'Ficha Verificada Google' : 'Google Verified Profile'}
             </h4>
-            <div className="bg-[#142126] p-3.5 rounded-lg border border-white/10 space-y-2 text-xs">
-              <div className="flex items-center gap-1.5 text-amber-400 font-bold">
-                <span>★ 4.6</span>
-                <span className="text-slate-400 font-normal">
-                  ({BUSINESS_INFO.reviewsCount} {lang === 'es' ? 'opiniones en Google' : 'reviews on Google'})
-                </span>
+            <div className="bg-[#142126] p-4 rounded-xl border border-white/10 space-y-2.5 text-sm">
+              <div className="flex items-center gap-2 text-white font-bold text-sm">
+                <span>{lang === 'es' ? 'Opiniones en Google Maps' : 'Reviews on Google Maps'}</span>
               </div>
-              <p className="text-[11px] text-slate-300">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {lang === 'es'
                   ? 'Consulta opiniones auténticas y ubicación comercial directamente en Google Maps.'
                   : 'Check authentic guest reviews and commercial base directly on Google Maps.'}

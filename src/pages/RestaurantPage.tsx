@@ -1,5 +1,15 @@
 import React from 'react';
-import { ArrowLeft, MessageCircle, Phone, MapPin, Utensils, GlassWater, Sun, Wind } from 'lucide-react';
+import {
+  ArrowLeft,
+  MessageCircle,
+  Phone,
+  MapPin,
+  Utensils,
+  GlassWater,
+  Sun,
+  Wind,
+  ExternalLink,
+} from 'lucide-react';
 import { Language, PageRoute, VideoItem } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 import { BUSINESS_INFO } from '../data/content';
@@ -32,8 +42,8 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Banner */}
-      <section className="relative py-24 sm:py-32 bg-[#092E3B] text-white overflow-hidden">
+      {/* 1. Encabezado Visual Propio de Coco's Pub */}
+      <section className="relative py-28 sm:py-36 bg-[#092E3B] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.restaurant}
@@ -41,127 +51,140 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/55" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <button
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#12A8A3] hover:text-white transition-colors mb-6 cursor-pointer"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#12A8A3] hover:text-white transition-colors mb-6 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5" />
             <span>{lang === 'es' ? 'Volver al Inicio' : 'Back to Home'}</span>
           </button>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white max-w-3xl mx-auto leading-tight">
+          <span className="text-sm sm:text-base font-bold uppercase tracking-wider text-[#12A8A3] block mb-2">
+            {lang === 'es' ? 'Gastronomía y Descanso en Punta Chame' : 'Coastal Dining & Rest in Punta Chame'}
+          </span>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
             {t.restaurantPage.heroTitle}
           </h1>
 
-          <p className="mt-4 text-sm sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-base sm:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-light">
             {t.restaurantPage.heroSubtitle}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={handleRestaurantInquiry}
-              className="px-8 py-3.5 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs uppercase tracking-wider rounded shadow transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              className="px-8 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-5 h-5" />
               <span>{t.restaurantPage.ctaRestaurant}</span>
             </button>
+            <a
+              href={`tel:${BUSINESS_INFO.phoneClean}`}
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg border border-white/25 flex items-center gap-2"
+            >
+              <Phone className="w-5 h-5 text-[#12A8A3]" />
+              <span>{BUSINESS_INFO.phone}</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* PRESENTACIÓN DEL ESTABLECIMIENTO & AMBIENTE */}
-      <section className="py-20 bg-white">
+      {/* 2. PRESENTACIÓN DEL ESTABLECIMIENTO & INSTALACIONES */}
+      <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#12A8A3]">
-                {lang === 'es' ? 'Gastronomía y Hospitalidad Costera' : 'Coastal Dining & Hospitality'}
+              <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
+                {lang === 'es' ? 'Hospitalidad Costera' : 'Coastal Hospitality'}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#092E3B] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight">
                 {t.restaurantPage.aboutTitle}
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                 {t.restaurantPage.aboutDesc}
               </p>
 
-              {/* 4 Feature highlights */}
+              {/* 4 Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <Wind className="w-5 h-5 text-[#12A8A3] shrink-0 mt-0.5" />
+                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3.5">
+                  <Wind className="w-6 h-6 text-[#12A8A3] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-[#092E3B]">
+                    <h3 className="font-bold text-base text-[#092E3B]">
                       {lang === 'es' ? 'Brisa y Vista Marina' : 'Sea Breeze & Ocean View'}
-                    </h4>
-                    <p className="text-xs text-slate-600 mt-0.5">
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1 leading-snug">
                       {lang === 'es' ? 'Deck playero ventilado frente a las aguas de Chame.' : 'Airy beachside deck facing tranquil waters.'}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <Utensils className="w-5 h-5 text-[#12A8A3] shrink-0 mt-0.5" />
+                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3.5">
+                  <Utensils className="w-6 h-6 text-[#12A8A3] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-[#092E3B]">
+                    <h3 className="font-bold text-base text-[#092E3B]">
                       {lang === 'es' ? 'Cocina del Mar' : 'Coastal Seafood'}
-                    </h4>
-                    <p className="text-xs text-slate-600 mt-0.5">
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1 leading-snug">
                       {lang === 'es' ? 'Platos tradicionales y productos frescos del litoral.' : 'Local culinary staples and fresh coastal fare.'}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <GlassWater className="w-5 h-5 text-[#12A8A3] shrink-0 mt-0.5" />
+                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3.5">
+                  <GlassWater className="w-6 h-6 text-[#12A8A3] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-[#092E3B]">
-                      {lang === 'es' ? 'Bebidas Frías' : 'Cold Beverages'}
-                    </h4>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      {lang === 'es' ? 'Refrescos, cocos y bebidas para hidratarte tras el tour.' : 'Cold refreshments and drinks after your boat trip.'}
+                    <h3 className="font-bold text-base text-[#092E3B]">
+                      {lang === 'es' ? 'Bebidas Frías y Cocos' : 'Cold Drinks & Coconuts'}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1 leading-snug">
+                      {lang === 'es' ? 'Refrescos, cocos y bebidas para hidratarte tras el mar.' : 'Cold refreshments and drinks after your boat trip.'}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                  <Sun className="w-5 h-5 text-[#12A8A3] shrink-0 mt-0.5" />
+                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3.5">
+                  <Sun className="w-6 h-6 text-[#12A8A3] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-[#092E3B]">
-                      {lang === 'es' ? 'El Cierre Perfecto' : 'The Ideal Wrap-Up'}
-                    </h4>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      {lang === 'es' ? 'El complemento natural a tus excursiones con Cocos Tour.' : 'The natural complement to your island tours.'}
+                    <h3 className="font-bold text-base text-[#092E3B]">
+                      {lang === 'es' ? 'Cierre de Jornada' : 'The Ideal Wrap-Up'}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1 leading-snug">
+                      {lang === 'es' ? 'El complemento perfecto para tus excursiones.' : 'The natural complement to your island journeys.'}
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Policy note: No online prices, contact directly */}
-              <div className="p-4 rounded-lg bg-[#F2E9DA]/50 border border-[#C9A878]/30 text-xs text-slate-700 leading-relaxed">
+              <div className="p-5 rounded-xl bg-[#F2E9DA]/70 border border-[#C9A878]/50 text-sm text-slate-800 leading-relaxed">
                 {t.restaurantPage.disclaimer}
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <div className="pt-2 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleRestaurantInquiry}
-                  className="px-6 py-3 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-xs uppercase tracking-wider rounded transition-colors"
+                  className="px-8 py-3.5 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  {t.restaurantPage.ctaRestaurant}
+                  <MessageCircle className="w-4 h-4 text-[#12A8A3]" />
+                  <span>{t.restaurantPage.ctaRestaurant}</span>
                 </button>
                 <a
                   href={`tel:${BUSINESS_INFO.phoneClean}`}
-                  className="px-6 py-3 border border-slate-300 text-slate-700 font-bold text-xs uppercase tracking-wider rounded hover:bg-slate-50 transition-colors text-center"
+                  className="px-8 py-3.5 border-2 border-slate-300 text-slate-800 font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-slate-50 transition-colors text-center flex items-center justify-center gap-2"
                 >
-                  {lang === 'es' ? 'Llamar al Restaurante' : 'Call Restaurant'}
+                  <Phone className="w-4 h-4 text-[#092E3B]" />
+                  <span>{lang === 'es' ? 'Llamar al Restaurante' : 'Call Restaurant'}</span>
                 </a>
               </div>
             </div>
 
             <div className="lg:col-span-6 space-y-6">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 aspect-4/3">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3">
                 <img
                   src={IMAGES.restaurant}
                   alt="Instalaciones de Coco's Pub Bar Restaurante"
@@ -180,25 +203,25 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-20 bg-[#092E3B] text-white text-center">
+      {/* 3. CTA FINAL */}
+      <section className="py-20 sm:py-24 bg-[#092E3B] text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             {t.finalCta.title}
           </h2>
-          <p className="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
             {t.finalCta.subtitle}
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={handleRestaurantInquiry}
-              className="w-full sm:w-auto px-8 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs uppercase tracking-wider rounded shadow cursor-pointer"
+              className="w-full sm:w-auto px-9 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl cursor-pointer"
             >
               {t.finalCta.whatsappBtn}
             </button>
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded border border-white/20"
+              className="w-full sm:w-auto px-9 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg border border-white/20"
             >
               {t.finalCta.callBtn}
             </a>

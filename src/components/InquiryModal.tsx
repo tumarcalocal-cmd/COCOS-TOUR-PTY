@@ -176,16 +176,16 @@ Could you please confirm availability and trip details?`;
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Experience */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-sm font-bold text-slate-800 mb-1.5">
                   {t.form.expLabel} <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={formData.experience}
                   onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                  className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3] focus:border-transparent"
+                  className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3] focus:border-transparent font-medium"
                 >
                   {experienceOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>
@@ -194,16 +194,16 @@ Could you please confirm availability and trip details?`;
                   ))}
                 </select>
                 {errors.experience && (
-                  <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
-                    <AlertCircle className="w-3.5 h-3.5" /> {errors.experience}
+                  <p className="text-xs sm:text-sm text-rose-500 mt-1 flex items-center gap-1">
+                    <AlertCircle className="w-4 h-4" /> {errors.experience}
                   </p>
                 )}
               </div>
 
               {/* Date & Group Size */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 <div className="sm:col-span-1">
-                  <label className="block text-xs font-semibold text-slate-800 mb-1">
+                  <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     {t.form.dateLabel} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -211,15 +211,15 @@ Could you please confirm availability and trip details?`;
                     value={formData.date}
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                    className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                   />
                   {errors.date && (
-                    <p className="text-xs text-rose-500 mt-1">{errors.date}</p>
+                    <p className="text-xs sm:text-sm text-rose-500 mt-1">{errors.date}</p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1">
+                  <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     {t.form.adultsLabel} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -228,15 +228,15 @@ Could you please confirm availability and trip details?`;
                     max="30"
                     value={formData.adults}
                     onChange={(e) => setFormData({ ...formData, adults: parseInt(e.target.value) || 1 })}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                    className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                   />
                   {errors.adults && (
-                    <p className="text-xs text-rose-500 mt-1">{errors.adults}</p>
+                    <p className="text-xs sm:text-sm text-rose-500 mt-1">{errors.adults}</p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1">
+                  <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     {t.form.childrenLabel}
                   </label>
                   <input
@@ -245,15 +245,15 @@ Could you please confirm availability and trip details?`;
                     max="20"
                     value={formData.children}
                     onChange={(e) => setFormData({ ...formData, children: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                    className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                   />
                 </div>
               </div>
 
               {/* Contact Name & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1">
+                  <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     {t.form.nameLabel} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -261,17 +261,17 @@ Could you please confirm availability and trip details?`;
                     value={formData.name}
                     placeholder={lang === 'es' ? 'Ej. Sofía Morales' : 'E.g. Sarah Jenkins'}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                    className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                   />
                   {errors.name && (
-                    <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.name}
+                    <p className="text-xs sm:text-sm text-rose-500 mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" /> {errors.name}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1">
+                  <label className="block text-sm font-bold text-slate-800 mb-1.5">
                     {t.form.phoneLabel} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -279,11 +279,11 @@ Could you please confirm availability and trip details?`;
                     value={formData.phone}
                     placeholder="+507 6XXX-XXXX"
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                    className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                   />
                   {errors.phone && (
-                    <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.phone}
+                    <p className="text-xs sm:text-sm text-rose-500 mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" /> {errors.phone}
                     </p>
                   )}
                 </div>
@@ -291,14 +291,14 @@ Could you please confirm availability and trip details?`;
 
               {/* Language Preference */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-sm font-bold text-slate-800 mb-1.5">
                   {t.form.langLabel}
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2.5">
                   <button
                     type="button"
                     onClick={() => setFormData({ ...formData, languagePreference: 'es' })}
-                    className={`py-2 text-xs font-medium rounded-md border text-center transition-colors ${
+                    className={`py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-lg border text-center transition-colors cursor-pointer ${
                       formData.languagePreference === 'es'
                         ? 'bg-[#092E3B] text-white border-[#092E3B]'
                         : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -309,7 +309,7 @@ Could you please confirm availability and trip details?`;
                   <button
                     type="button"
                     onClick={() => setFormData({ ...formData, languagePreference: 'en' })}
-                    className={`py-2 text-xs font-medium rounded-md border text-center transition-colors ${
+                    className={`py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-lg border text-center transition-colors cursor-pointer ${
                       formData.languagePreference === 'en'
                         ? 'bg-[#092E3B] text-white border-[#092E3B]'
                         : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -322,7 +322,7 @@ Could you please confirm availability and trip details?`;
 
               {/* Comments */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-sm font-bold text-slate-800 mb-1.5">
                   {t.form.commentsLabel}
                 </label>
                 <textarea
@@ -330,34 +330,34 @@ Could you please confirm availability and trip details?`;
                   value={formData.comments}
                   placeholder={t.form.commentsPlaceholder}
                   onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
-                  className="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
+                  className="w-full px-3.5 py-2.5 text-base bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#12A8A3]"
                 />
               </div>
 
               {/* Notice */}
-              <div className="bg-[#F2E9DA]/50 rounded-lg p-3 text-[11px] text-[#142126] border border-[#C9A878]/30">
+              <div className="bg-[#F2E9DA]/60 rounded-xl p-3.5 text-xs sm:text-sm text-[#142126] border border-[#C9A878]/40">
                 <p className="leading-relaxed">
                   <strong>{lang === 'es' ? 'Condición de confirmación:' : 'Confirmation Policy:'}</strong> {t.form.notice}
                 </p>
               </div>
 
               {/* Buttons */}
-              <div className="pt-2 space-y-2">
+              <div className="pt-2 space-y-2.5">
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-md shadow-md flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer"
+                  className="w-full py-4 px-6 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all active:scale-[0.99] cursor-pointer"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-5 h-5" />
                   <span>{t.form.submitBtn}</span>
                 </button>
 
                 <div className="flex items-center justify-center pt-1">
                   <a
                     href={`tel:${BUSINESS_INFO.phoneClean}`}
-                    className="text-xs font-semibold text-[#092E3B] hover:text-[#12A8A3] flex items-center gap-1.5 transition-colors py-1"
+                    className="text-sm font-semibold text-[#092E3B] hover:text-[#12A8A3] flex items-center gap-2 transition-colors py-1"
                   >
-                    <Phone className="w-3.5 h-3.5" />
-                    <span>{t.form.callAltBtn}: <span className="tabular-nums font-mono">{BUSINESS_INFO.phone}</span></span>
+                    <Phone className="w-4 h-4 text-[#12A8A3]" />
+                    <span>{t.form.callAltBtn}: <strong className="tabular-nums font-mono text-base">{BUSINESS_INFO.phone}</strong></span>
                   </a>
                 </div>
               </div>

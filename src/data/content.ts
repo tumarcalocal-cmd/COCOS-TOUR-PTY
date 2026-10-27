@@ -12,8 +12,6 @@ export const BUSINESS_INFO = {
   whatsappUrl: 'https://wa.me/50762893605',
   googleMapsUrl: 'https://maps.app.goo.gl/Erf79yVqucEqT1179',
   address: 'Playa, Punta Chame, provincia de Panamá Oeste, República de Panamá',
-  rating: 4.6,
-  reviewsCount: 10,
   guideName: 'José Valverde',
 };
 

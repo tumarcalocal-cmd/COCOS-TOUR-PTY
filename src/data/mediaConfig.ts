@@ -46,7 +46,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       en: 'Coastal journey through Otoque Oriente and Occidente, pristine waters, beaches and historic relics.',
     },
     poster: '/images/otoque.jpg',
-    // videoUrl: '/videos/otoque.mp4',
+    videoUrl: 'https://www.canva.com/design/DAHZNxK5Yx0/NpCZ_nq1Kl4A-QwFTRGiHA/watch?embed',
     tag: {
       es: 'Islas y Cultura',
       en: 'Islands & Culture',
@@ -100,7 +100,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       en: 'Majestic breeching and tail flukes of migratory humpback whales in the warm Gulf of Panama waters.',
     },
     poster: '/images/whales.jpg',
-    // videoUrl: '/videos/whales.mp4',
+    videoUrl: 'https://www.canva.com/design/DAHZNzA83c4/uLZQxyJAzyhiYTIemDpjPQ/watch?embed',
     tag: {
       es: 'Avistamiento de Temporada',
       en: 'Seasonal Whale Watching',

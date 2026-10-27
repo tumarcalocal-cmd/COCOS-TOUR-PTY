@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         {/* Zone 2: Clean single-line text navigation links */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-200">
+        <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-slate-200">
           {navLinks.map((item) => {
             const isActive = currentPath === item.path;
             return (
@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavClick(item.path)}
                 className={`transition-colors whitespace-nowrap shrink-0 pb-1 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#12A8A3] ${
                   isActive
-                    ? 'text-white font-semibold border-b-2 border-[#12A8A3]'
+                    ? 'text-white font-bold border-b-2 border-[#12A8A3]'
                     : 'text-slate-300 hover:text-white hover:border-b-2 hover:border-white/30'
                 }`}
               >
@@ -69,13 +69,13 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: 1 Primary action + Language Switcher */}
-        <div className="hidden lg:flex items-center gap-4 shrink-0">
+        <div className="hidden lg:flex items-center gap-5 shrink-0">
           {/* Language Selector */}
-          <div className="flex items-center bg-[#142126]/60 rounded-md p-0.5 border border-white/10 text-xs">
+          <div className="flex items-center bg-[#142126]/60 rounded-md p-1 border border-white/10 text-xs">
             <button
               onClick={() => onToggleLang('es')}
               aria-label="Cambiar idioma a Español"
-              className={`px-2.5 py-1 rounded cursor-pointer transition-colors font-semibold ${
+              className={`px-3 py-1.5 rounded cursor-pointer transition-colors font-bold ${
                 lang === 'es'
                   ? 'bg-[#12A8A3] text-white'
                   : 'text-slate-300 hover:text-white'
@@ -86,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onToggleLang('en')}
               aria-label="Change language to English"
-              className={`px-2.5 py-1 rounded cursor-pointer transition-colors font-semibold ${
+              className={`px-3 py-1.5 rounded cursor-pointer transition-colors font-bold ${
                 lang === 'en'
                   ? 'bg-[#12A8A3] text-white'
                   : 'text-slate-300 hover:text-white'
@@ -99,17 +99,17 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Quick Call */}
           <a
             href={`tel:${BUSINESS_INFO.phoneClean}`}
-            className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-white transition-colors px-2 py-1 rounded"
+            className="flex items-center gap-2 text-sm text-slate-200 hover:text-white transition-colors px-2.5 py-1.5 rounded"
             title={lang === 'es' ? 'Llamar a Cocos Tour PTY' : 'Call Cocos Tour PTY'}
           >
-            <Phone className="w-3.5 h-3.5 text-[#12A8A3]" />
-            <span className="tabular-nums font-mono">{BUSINESS_INFO.phone}</span>
+            <Phone className="w-4 h-4 text-[#12A8A3]" />
+            <span className="tabular-nums font-mono font-medium">{BUSINESS_INFO.phone}</span>
           </a>
 
           {/* Primary CTA */}
           <button
             onClick={() => onOpenInquiry()}
-            className="px-5 py-2.5 text-xs font-bold tracking-wide uppercase text-[#092E3B] bg-[#12A8A3] hover:bg-[#16bfba] rounded shadow-md transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
+            className="px-6 py-3 text-xs sm:text-sm font-bold tracking-wide uppercase text-[#092E3B] bg-[#12A8A3] hover:bg-[#16bfba] rounded-lg shadow-md transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-95"
           >
             {t.nav.inquireBtn}
           </button>

@@ -1,5 +1,16 @@
 import React from 'react';
-import { ArrowLeft, MessageCircle, Phone, ShieldAlert, Sparkles, Check, Info } from 'lucide-react';
+import {
+  ArrowLeft,
+  MessageCircle,
+  Phone,
+  ShieldAlert,
+  Sparkles,
+  Check,
+  Info,
+  Waves,
+  Eye,
+  Calendar,
+} from 'lucide-react';
 import { Language, PageRoute, VideoItem } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 import { BUSINESS_INFO } from '../data/content';
@@ -23,8 +34,8 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Banner */}
-      <section className="relative py-24 sm:py-32 bg-[#092E3B] text-white overflow-hidden">
+      {/* 1. Encabezado Visual Propio de Delfines y Ballenas */}
+      <section className="relative py-28 sm:py-36 bg-[#092E3B] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.whales}
@@ -32,48 +43,59 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/55" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <button
             onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#12A8A3] hover:text-white transition-colors mb-6 cursor-pointer"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#12A8A3] hover:text-white transition-colors mb-6 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5" />
             <span>{lang === 'es' ? 'Volver al Inicio' : 'Back to Home'}</span>
           </button>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white max-w-3xl mx-auto leading-tight">
+          <span className="text-sm sm:text-base font-bold uppercase tracking-wider text-[#12A8A3] block mb-2">
+            {lang === 'es' ? 'Fauna Marina en el Golfo de Panamá' : 'Marine Wildlife in the Gulf of Panama'}
+          </span>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
             {t.marineLifePage.heroTitle}
           </h1>
 
-          <p className="mt-4 text-sm sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-base sm:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-light">
             {t.marineLifePage.heroSubtitle}
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => onOpenInquiry('Avistamiento de delfines')}
-              className="px-8 py-3.5 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs uppercase tracking-wider rounded shadow transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              className="px-8 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-5 h-5" />
               <span>{t.marineLifePage.ctaMarine}</span>
             </button>
+            <a
+              href={`tel:${BUSINESS_INFO.phoneClean}`}
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg border border-white/25 flex items-center gap-2"
+            >
+              <Phone className="w-5 h-5 text-[#12A8A3]" />
+              <span>{BUSINESS_INFO.phone}</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* MANDATORY ETHICAL SIGHTING NOTICE */}
-      <section className="py-8 bg-[#F2E9DA]/60 border-b border-amber-200/50">
+      {/* 2. AVISO ÉTICO OBLIGATORIO SOBRE AVISTAMIENTOS */}
+      <section className="py-8 bg-[#F2E9DA]/70 border-b border-amber-300/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-4 sm:p-5 rounded-xl bg-white border border-[#C9A878]/40 shadow-sm flex items-start gap-4">
-            <Info className="w-6 h-6 text-[#092E3B] shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <h4 className="font-bold text-xs sm:text-sm text-[#092E3B]">
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#C9A878]/50 shadow-sm flex items-start gap-4">
+            <Info className="w-7 h-7 text-[#092E3B] shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <h3 className="font-bold text-sm sm:text-base text-[#092E3B]">
                 {t.marineLifePage.disclaimerTitle}
-              </h4>
-              <p className="text-xs text-slate-700 leading-relaxed">
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
                 {t.marineLifePage.disclaimerText}
               </p>
             </div>
@@ -81,44 +103,45 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
         </div>
       </section>
 
-      {/* DELFINES MANCHADOS DEL PACÍFICO */}
-      <section className="py-20 bg-white">
+      {/* 3. DELFINES MANCHADOS DEL PACÍFICO */}
+      <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#12A8A3]">
-                {lang === 'es' ? 'Cetáceos Odontocetos' : 'Pacific Odontocetes'}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
+                {lang === 'es' ? 'Cetáceos Odontocetos del Golfo' : 'Pacific Odontocete Cetaceans'}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#092E3B] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight">
                 {t.marineLifePage.dolphinsTitle}
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                 {t.marineLifePage.dolphinsDesc}
               </p>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs text-slate-700">
-                <span className="font-bold text-[#092E3B] block">
-                  {lang === 'es' ? 'Comportamiento en Libertad:' : 'Wild Behavior Patterns:'}
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-sm text-slate-700">
+                <span className="font-bold text-[#092E3B] text-base block">
+                  {lang === 'es' ? 'Comportamiento en Libertad:' : 'Wild Behavior in Freedom:'}
                 </span>
                 <p className="leading-relaxed">
                   {lang === 'es'
-                    ? 'Nadan en grupos sociales que pueden variar desde parejas hasta decenas de ejemplares. Su agilidad les permite saltar verticalmente y deslizarse en las olas de presión generadas por el bote cuando deciden interactuar voluntariamente.'
-                    : 'They travel in active social pods ranging from small family groups to dozens of individuals. Their agility allows them to breach vertically and ride pressure waves when they choose to voluntarily approach.'}
+                    ? 'Navegan en manadas dinámicas que patrullan el golfo en busca de alimento. Frecuentemente se acercan por iniciativa propia a surfear la estela de los botes, ofreciendo avistamientos asombrosos en superficie sin forzar la interacción.'
+                    : 'They cruise in dynamic pods feeding throughout the gulf waters. They frequently approach by their own curiosity to ride boat wakes, creating breathtaking surface encounters without coerced interaction.'}
                 </p>
               </div>
 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenInquiry('Avistamiento de delfines')}
-                  className="px-6 py-3 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-xs uppercase tracking-wider rounded transition-colors"
+                  className="px-8 py-3.5 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors shadow flex items-center gap-2 cursor-pointer"
                 >
-                  {t.featured.inquireExperience}
+                  <MessageCircle className="w-4 h-4 text-[#12A8A3]" />
+                  <span>{t.featured.inquireExperience}</span>
                 </button>
               </div>
             </div>
 
             <div className="lg:col-span-6 space-y-6">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 aspect-4/3">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3">
                 <img
                   src={IMAGES.dolphins}
                   alt="Delfines Manchados en el Pacífico de Panamá"
@@ -137,17 +160,19 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
         </div>
       </section>
 
-      {/* BALLENAS JOROBADAS (TEMPORADA VERIFICADA JULIO - OCTUBRE) */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      {/* 4. BALLENAS JOROBADAS (TEMPORADA VERIFICADA JULIO - OCTUBRE) */}
+      <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1 space-y-6">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 aspect-16/9">
-                <img
-                  src={IMAGES.whales}
-                  alt="Ballena Jorobada en el Golfo de Panamá"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+              <div className="relative w-full aspect-16/9 overflow-hidden rounded-2xl shadow-2xl border border-slate-200 bg-[#071b2b]">
+                <iframe
+                  src="https://www.canva.com/design/DAHZNzA83c4/uLZQxyJAzyhiYTIemDpjPQ/watch?embed"
+                  title="Avistamiento de ballenas - Cocos Tour PTY"
+                  loading="lazy"
+                  allow="fullscreen"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
                 />
               </div>
 
@@ -158,40 +183,41 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
               />
             </div>
 
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-5">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#12A8A3]">
-                  {lang === 'es' ? 'Migración Antártica Anual' : 'Annual Migration'}
+            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
+                  {lang === 'es' ? 'Migración Anual Verificada' : 'Verified Migration Season'}
                 </span>
-                <span className="text-xs text-slate-500 font-mono">
-                  · {lang === 'es' ? 'Julio – Octubre' : 'July – October'}
+                <span className="text-sm font-bold text-[#092E3B] bg-[#F2E9DA] px-2.5 py-0.5 rounded">
+                  {lang === 'es' ? 'Julio – Octubre' : 'July – October'}
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#092E3B] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight">
                 {t.marineLifePage.whalesTitle}
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                 {t.marineLifePage.whalesDesc}
               </p>
 
-              <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 text-xs text-slate-700">
-                <span className="font-bold text-[#092E3B] block">
-                  {lang === 'es' ? 'Por Qué Vienen a Panamá:' : 'Why They Migrate to Panama:'}
+              <div className="p-6 rounded-2xl bg-white border border-slate-200 space-y-3 text-sm text-slate-700 shadow-sm">
+                <span className="font-bold text-[#092E3B] text-base block">
+                  {lang === 'es' ? 'El Santuario de Crianza en Panamá:' : 'The Nursery Waters of Panama:'}
                 </span>
                 <p className="leading-relaxed">
                   {lang === 'es'
-                    ? 'Las aguas tropicales cálidas y calmas del Pacífico panameño proporcionan el entorno óptimo para el alumbramiento de los ballenatos, que nacen con una capa delgada de grasa corporal insuficiente para soportar el gélido invierno austral.'
-                    : 'The warm, calm tropical waters of the Panamanian Pacific provide ideal conditions for giving birth and nursing newborn calves, which lack the thick blubber layer needed to withstand subpolar winters.'}
+                    ? 'Tras recorrer más de 8.000 kilómetros desde la Antártida, las ballenas jorobadas encuentran en el golfo aguas cálidas y tranquilas, óptimas para que las crías recién nacidas puedan ganar fuerza antes de regresar a mares fríos.'
+                    : 'After traversing over 8,000 kilometers from Antarctica, humpback whales reach the gulf’s calm, warm waters—the optimal sanctuary for newborn calves to build strength before the journey back.'}
                 </p>
               </div>
 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenInquiry('Avistamiento de ballenas')}
-                  className="px-6 py-3 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs uppercase tracking-wider rounded transition-colors shadow"
+                  className="px-8 py-3.5 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm uppercase tracking-wider rounded-lg transition-colors shadow flex items-center gap-2 cursor-pointer active:scale-95"
                 >
-                  {t.featured.inquireExperience}
+                  <MessageCircle className="w-4 h-4" />
+                  <span>{t.featured.inquireExperience}</span>
                 </button>
               </div>
             </div>
@@ -199,75 +225,75 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
         </div>
       </section>
 
-      {/* CÓDIGO DE OBSERVACIÓN RESPONSABLE DE FAUNA */}
-      <section className="py-20 bg-white">
+      {/* 5. CÓDIGO DE OBSERVACIÓN RESPONSABLE DE FAUNA */}
+      <section className="py-20 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#12A8A3]">
+          <div className="max-w-3xl mb-14">
+            <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
               {lang === 'es' ? 'Compromiso Ético y Ambiental' : 'Environmental Ethics'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#092E3B] tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight mt-1">
               {t.marineLifePage.responsibleTitle}
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
+            <p className="text-base sm:text-lg text-slate-600 mt-2">
               {lang === 'es'
-                ? 'Nuestras operaciones en mar abierto siguen directrices rigurosas de protección animal.'
-                : 'Our open ocean navigation strictly follows established wildlife protection standards.'}
+                ? 'Nuestras salidas se rigen por principios de protección animal y respeto al entorno marino.'
+                : 'All our boat excursions strictly observe established marine wildlife welfare standards.'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-4 h-4" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
+                <Check className="w-5 h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-sm text-[#092E3B] mb-1">
-                  {lang === 'es' ? 'Distancia Prudencial' : 'Safe Distance'}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+              <div className="space-y-1">
+                <h3 className="font-bold text-base text-[#092E3B]">
+                  {lang === 'es' ? 'Distancia Prudencial de Seguridad' : 'Safe Distance Protocol'}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {t.marineLifePage.rule1}
                 </p>
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-4 h-4" />
+            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
+                <Check className="w-5 h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-sm text-[#092E3B] mb-1">
-                  {lang === 'es' ? 'Protección a Madres y Crías' : 'Mother & Calf Protection'}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+              <div className="space-y-1">
+                <h3 className="font-bold text-base text-[#092E3B]">
+                  {lang === 'es' ? 'Protección a Madres y Ballenatos' : 'Mothers & Calves Sanctuary'}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {t.marineLifePage.rule2}
                 </p>
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-4 h-4" />
+            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
+                <Check className="w-5 h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-sm text-[#092E3B] mb-1">
-                  {lang === 'es' ? 'Velocidad Reducida y Rumbo Constante' : 'Low Speed & Constant Heading'}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+              <div className="space-y-1">
+                <h3 className="font-bold text-base text-[#092E3B]">
+                  {lang === 'es' ? 'Velocidad Reducida y Rumbo Constante' : 'Low Speed & Predictable Heading'}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {t.marineLifePage.rule3}
                 </p>
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-4 h-4" />
+            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#092E3B] text-[#12A8A3] flex items-center justify-center shrink-0 mt-0.5">
+                <Check className="w-5 h-5" />
               </div>
-              <div>
-                <h4 className="font-bold text-sm text-[#092E3B] mb-1">
-                  {lang === 'es' ? 'Cero Persecución Forzada' : 'Zero Pursuit Policy'}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
+              <div className="space-y-1">
+                <h3 className="font-bold text-base text-[#092E3B]">
+                  {lang === 'es' ? 'Cero Persecución Forzada' : 'Zero Coercive Pursuit'}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {t.marineLifePage.rule4}
                 </p>
               </div>
@@ -276,25 +302,25 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-20 bg-[#092E3B] text-white text-center">
+      {/* 6. CTA FINAL */}
+      <section className="py-20 sm:py-24 bg-[#092E3B] text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             {t.finalCta.title}
           </h2>
-          <p className="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
             {t.finalCta.subtitle}
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => onOpenInquiry('Avistamiento de delfines')}
-              className="w-full sm:w-auto px-8 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs uppercase tracking-wider rounded shadow cursor-pointer"
+              className="w-full sm:w-auto px-9 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl cursor-pointer"
             >
               {t.finalCta.whatsappBtn}
             </button>
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded border border-white/20"
+              className="w-full sm:w-auto px-9 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg border border-white/20"
             >
               {t.finalCta.callBtn}
             </a>

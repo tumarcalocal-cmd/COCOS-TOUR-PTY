@@ -36,33 +36,33 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, lang })
           </button>
         </div>
 
-        <div className="p-6 space-y-6 text-sm text-slate-700 max-h-[70vh] overflow-y-auto leading-relaxed">
-          <section className="space-y-2">
-            <h4 className="font-bold text-[#092E3B] text-base flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#12A8A3]" />
+        <div className="p-7 space-y-6 text-base text-slate-800 max-h-[70vh] overflow-y-auto leading-relaxed">
+          <section className="space-y-2.5">
+            <h4 className="font-bold text-[#092E3B] text-lg flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#12A8A3]" />
               {t.legal.privacyTitle}
             </h4>
-            <p>{t.legal.privacyContent}</p>
+            <p className="text-slate-700">{t.legal.privacyContent}</p>
           </section>
 
-          <section className="space-y-2 pt-4 border-t border-slate-200">
-            <h4 className="font-bold text-[#092E3B] text-base flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#12A8A3]" />
+          <section className="space-y-2.5 pt-4 border-t border-slate-200">
+            <h4 className="font-bold text-[#092E3B] text-lg flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#12A8A3]" />
               {t.legal.termsTitle}
             </h4>
-            <p>{t.legal.termsContent}</p>
+            <p className="text-slate-700">{t.legal.termsContent}</p>
           </section>
 
-          <div className="bg-[#F2E9DA] p-3.5 rounded-lg text-xs text-slate-800">
-            <p className="font-semibold mb-1">Cocos Tour PTY — Punta Chame, Panamá</p>
+          <div className="bg-[#F2E9DA] p-4 rounded-xl text-sm text-slate-800">
+            <p className="font-bold mb-1">Cocos Tour PTY — Punta Chame, Panamá</p>
             <p>Contacto comercial directo: +507 6289-3605 | cocostourpty@gmail.com</p>
           </div>
         </div>
 
-        <div className="bg-slate-50 px-6 py-3 border-t border-slate-200 flex justify-end">
+        <div className="bg-slate-50 px-7 py-4 border-t border-slate-200 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-[#092E3B] hover:bg-[#142126] text-white font-semibold text-xs rounded transition-colors"
+            className="px-6 py-2.5 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-sm rounded-lg transition-colors cursor-pointer"
           >
             {t.legal.closeBtn}
           </button>
