@@ -28,7 +28,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       en: 'Drone flight over the coasts and islands of the Panamanian Pacific in Punta Chame and archipelago.',
     },
     poster: '/images/hero.jpg',
-    // videoUrl: '/videos/hero.mp4',
+    videoUrl: '/videos/hero.mp4',
     tag: {
       es: 'Vista Aérea Dron',
       en: 'Aerial Drone View',
