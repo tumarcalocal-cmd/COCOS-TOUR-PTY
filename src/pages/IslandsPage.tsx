@@ -208,36 +208,25 @@ export const IslandsPage: React.FC<IslandsPageProps> = ({
                 {t.islandsPage.bonaDesc}
               </p>
 
-              {/* 3 Seabird Species Cards */}
-              <div className="space-y-3 pt-2">
-                <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1 shadow-sm">
-                  <div className="flex items-center gap-2 font-bold text-sm sm:text-base text-[#092E3B]">
-                    <Bird className="w-5 h-5 text-[#12A8A3]" />
-                    <span>{t.islandsPage.bird1Title}</span>
+              {/* Image Carousel for Birds */}
+              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+                <div className="absolute inset-0">
+                  <img src="/images/fragatas.jpg" alt="Fragatas" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white font-bold text-lg">Fragatas</p>
                   </div>
-                  <p className="text-sm text-slate-600 pl-7 leading-relaxed">
-                    {t.islandsPage.bird1Desc}
-                  </p>
                 </div>
-
-                <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1 shadow-sm">
-                  <div className="flex items-center gap-2 font-bold text-sm sm:text-base text-[#092E3B]">
-                    <Bird className="w-5 h-5 text-[#12A8A3]" />
-                    <span>{t.islandsPage.bird2Title}</span>
+                <div className="absolute inset-0">
+                  <img src="/images/piquero-patas-azules.jpg" alt="Piquero Patas Azules" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white font-bold text-lg">Piquero Patas Azules</p>
                   </div>
-                  <p className="text-sm text-slate-600 pl-7 leading-relaxed">
-                    {t.islandsPage.bird2Desc}
-                  </p>
                 </div>
-
-                <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1 shadow-sm">
-                  <div className="flex items-center gap-2 font-bold text-sm sm:text-base text-[#092E3B]">
-                    <Bird className="w-5 h-5 text-[#12A8A3]" />
-                    <span>{t.islandsPage.bird3Title}</span>
+                <div className="absolute inset-0">
+                  <img src="/images/piquero-pardo.jpg" alt="Piquero Pardo" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white font-bold text-lg">Piquero Pardo</p>
                   </div>
-                  <p className="text-sm text-slate-600 pl-7 leading-relaxed">
-                    {t.islandsPage.bird3Desc}
-                  </p>
                 </div>
               </div>
 
