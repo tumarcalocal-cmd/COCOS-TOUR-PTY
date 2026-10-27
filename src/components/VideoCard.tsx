@@ -36,14 +36,9 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, lang, onPlay }) => 
           </div>
         </div>
 
-        {/* Metadata tag & duration */}
-        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-xs text-white">
+        {/* Metadata tag */}
+        <div className="absolute bottom-2.5 left-3 right-3 flex items-center text-xs text-white">
           <span className="text-[11px] font-semibold text-[#12A8A3] drop-shadow">{tag}</span>
-          {video.duration && (
-            <span className="text-[10px] font-mono bg-black/60 px-1.5 py-0.5 rounded text-white/90">
-              {video.duration}
-            </span>
-          )}
         </div>
       </div>
 
