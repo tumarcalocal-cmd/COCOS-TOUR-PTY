@@ -21,7 +21,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Vuelo de dron sobre las costas e islas del Pacífico panameño en Punta Chame y el archipiélago.',
       en: 'Drone flight over the coasts and islands of the Panamanian Pacific in Punta Chame and archipelago.',
     },
-    poster: '/src/assets/images/hero_panama_islands_1793082060622.jpg',
+    poster: '/images/hero_panama_islands_1793082060622.jpg',
     // Inserte aquí el enlace directo al MP4 exportado de Canva o servidor externo:
     // videoUrl: 'https://ejemplo.com/videos/hero_cocos_tour.mp4',
     tag: {
@@ -41,7 +41,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Recorrido costero por Otoque Oriente y Occidente, sus aguas cristalinas, playas y vestigios históricos.',
       en: 'Coastal journey through Otoque Oriente and Occidente, pristine waters, beaches and historic relics.',
     },
-    poster: '/src/assets/images/isla_otoque_coastal_1793082061061.jpg',
+    poster: '/images/isla_otoque_coastal_1793082061061.jpg',
     tag: {
       es: 'Islas y Cultura',
       en: 'Islands & Culture',
@@ -59,7 +59,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Acantilados volcánicos donde anidan miles de piqueros pardos, piqueros de patas azules y fragatas.',
       en: 'Volcanic cliffs nesting thousands of brown boobies, blue-footed boobies and frigatebirds.',
     },
-    poster: '/src/assets/images/isla_bona_birds_cliffs_1793082061784.jpg',
+    poster: '/images/isla_bona_birds_cliffs_1793082061784.jpg',
     tag: {
       es: 'Reserva Natural',
       en: 'Nature Sanctuary',
@@ -77,7 +77,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Manadas de delfines del Pacífico surcando las olas frente a la proa con libertad y alegría.',
       en: 'Pods of Pacific spotted dolphins gliding alongside the bow in open Pacific waters.',
     },
-    poster: '/src/assets/images/pacific_spotted_dolphins_1793082062460.jpg',
+    poster: '/images/pacific_spotted_dolphins_1793082062460.jpg',
     tag: {
       es: 'Fauna Marina',
       en: 'Marine Wildlife',
@@ -95,7 +95,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Majestuoso salto y aletazos de ballenas jorobadas migratorias en las cálidas aguas del Golfo de Panamá.',
       en: 'Majestic breeching and tail flukes of migratory humpback whales in the warm Gulf of Panama waters.',
     },
-    poster: '/src/assets/images/humpback_whale_tail_1793082063160.jpg',
+    poster: '/images/humpback_whale_tail_1793082063160.jpg',
     tag: {
       es: 'Avistamiento de Temporada',
       en: 'Seasonal Whale Watching',
@@ -113,7 +113,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'El rincón perfecto en Punta Chame para relajarse frente a la brisa marina y refrescarse tras el recorrido.',
       en: 'The beachside spot in Punta Chame to unwind by the sea breeze and enjoy fresh refreshments.',
     },
-    poster: '/src/assets/images/cocos_pub_restaurant_1793082064167.jpg',
+    poster: '/images/cocos_pub_restaurant_1793082064167.jpg',
     tag: {
       es: 'Gastronomía y Relax',
       en: 'Dining & Relax',
@@ -123,11 +123,11 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
 };
 
 export const IMAGES = {
-  hero: '/src/assets/images/hero_panama_islands_1793082060622.jpg',
-  otoque: '/src/assets/images/isla_otoque_coastal_1793082061061.jpg',
-  bona: '/src/assets/images/isla_bona_birds_cliffs_1793082061784.jpg',
-  dolphins: '/src/assets/images/pacific_spotted_dolphins_1793082062460.jpg',
-  whales: '/src/assets/images/humpback_whale_tail_1793082063160.jpg',
-  restaurant: '/src/assets/images/cocos_pub_restaurant_1793082064167.jpg',
-  guide: '/src/assets/images/jose_valverde_guide_1793082064189.jpg',
+  hero: '/images/hero_panama_islands_1793082060622.jpg',
+  otoque: '/images/isla_otoque_coastal_1793082061061.jpg',
+  bona: '/images/isla_bona_birds_cliffs_1793082061784.jpg',
+  dolphins: '/images/pacific_spotted_dolphins_1793082062460.jpg',
+  whales: '/images/humpback_whale_tail_1793082063160.jpg',
+  restaurant: '/images/cocos_pub_restaurant_1793082064167.jpg',
+  guide: '/images/jose_valverde_guide_1793082064189.jpg',
 };
