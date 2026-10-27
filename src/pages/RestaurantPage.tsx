@@ -193,11 +193,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
                 />
               </div>
 
-              <VideoCard
-                video={MEDIA_CONFIG.restaurantVideo}
-                lang={lang}
-                onPlay={onPlayVideo}
-              />
+
             </div>
           </div>
         </div>

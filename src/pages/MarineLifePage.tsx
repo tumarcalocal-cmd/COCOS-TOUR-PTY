@@ -10,6 +10,8 @@ import {
   Waves,
   Eye,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Language, PageRoute, VideoItem } from '../types';
 import { TRANSLATIONS } from '../data/translations';
@@ -32,17 +34,32 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
 }) => {
   const t = TRANSLATIONS[lang];
 
+  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
+  const whaleVideos = ['/videos/whales.mp4', '/videos/whales-2.mp4', '/videos/whales-3.mp4'];
+
+  const nextVideo = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % whaleVideos.length);
+  };
+
+  const prevVideo = () => {
+    setCurrentVideoIndex((prev) => (prev - 1 + whaleVideos.length) % whaleVideos.length);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* 1. Encabezado Visual Propio de Delfines y Ballenas */}
       <section className="relative py-28 sm:py-36 bg-[#092E3B] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src={IMAGES.whales}
-            alt="Avistamiento de Ballenas y Delfines en Panamá"
-            referrerPolicy="no-referrer"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/videos/hero-specific.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/55" />
         </div>
 
@@ -150,11 +167,7 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
                 />
               </div>
 
-              <VideoCard
-                video={MEDIA_CONFIG.dolphinsVideo}
-                lang={lang}
-                onPlay={onPlayVideo}
-              />
+
             </div>
           </div>
         </div>
@@ -165,22 +178,49 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1 space-y-6">
-              <div className="relative w-full aspect-16/9 overflow-hidden rounded-2xl shadow-2xl border border-slate-200 bg-[#071b2b]">
-                <iframe
-                  src="https://www.canva.com/design/DAHZNzA83c4/uLZQxyJAzyhiYTIemDpjPQ/watch?embed"
-                  title="Avistamiento de ballenas - Cocos Tour PTY"
-                  loading="lazy"
-                  allow="fullscreen"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full border-0"
-                />
-              </div>
+              <div className="relative w-full aspect-16/9 overflow-hidden rounded-2xl shadow-2xl border border-slate-200 bg-[#071b2b] group">
+                <video
+                  key={whaleVideos[currentVideoIndex]}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src={whaleVideos[currentVideoIndex]} type="video/mp4" />
+                </video>
 
-              <VideoCard
-                video={MEDIA_CONFIG.whalesVideo}
-                lang={lang}
-                onPlay={onPlayVideo}
-              />
+                {/* Carousel Navigation Arrows */}
+                <button
+                  onClick={prevVideo}
+                  aria-label="Anterior"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={nextVideo}
+                  aria-label="Siguiente"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+
+                {/* Dots Indicator */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                  {whaleVideos.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentVideoIndex(idx)}
+                      aria-label={`Video ${idx + 1}`}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        idx === currentVideoIndex ? 'w-6 bg-[#12A8A3]' : 'w-2 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
