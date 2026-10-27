@@ -38,12 +38,6 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-[#092E3B] border-b border-white/10">
           <div className="flex items-center gap-2 text-xs">
             <span className="text-[#12A8A3] font-semibold">{tag}</span>
-            {video.duration && (
-              <>
-                <span className="text-white/40">·</span>
-                <span className="text-white/70 font-mono text-[11px]">{video.duration}</span>
-              </>
-            )}
           </div>
           <button
             onClick={onClose}
