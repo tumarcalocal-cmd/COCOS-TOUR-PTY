@@ -70,7 +70,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           className="absolute inset-0 h-full w-full object-cover pointer-events-none"
           style={{ objectFit: 'cover' }}
         >
-          <source src="/videos/home-hero.mp4" type="video/mp4" />
+          <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/hero-2.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/70 to-[#092E3B]/40 pointer-events-none" />
@@ -194,45 +194,44 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* 3. PRESENTACIÓN BREVE DE JOSÉ VALVERDE */}
       <section className="py-20 sm:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#092E3B] text-white rounded-2xl overflow-hidden shadow-2xl border border-white/10 p-8 sm:p-12 lg:p-16">
-            <div className="flex flex-col lg:flex-row gap-8">
-              <div className="w-full lg:w-1/3 shrink-0">
-                <img 
-                  src="/assets/aistudio/guide.jpg" 
-                  alt="José Valverde" 
-                  className="w-full h-full object-cover rounded-xl"
-                />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#092E3B] text-white rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col md:flex-row items-stretch">
+            {/* Fotografía (45% ancho en escritorio, altura completa) */}
+            <div className="w-full md:w-[45%] shrink-0 min-h-[320px] md:min-h-full relative overflow-hidden">
+              <img
+                src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/guide.jpg"
+                alt="José Valverde"
+                className="w-full h-full object-cover absolute inset-0"
+              />
+            </div>
+
+            {/* Contenido (55% ancho en escritorio) */}
+            <div className="w-full md:w-[55%] p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
+                  Guía local de confianza
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                  Conoce a José Valverde
+                </h2>
+                <p className="text-base sm:text-lg text-[#F2E9DA] font-medium leading-relaxed">
+                  Guía local de Isla Otoque y creador de Cocostourpty enfocado en experiencias marinas y avistamiento de cetáceos y aves.
+                </p>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-2">
+                  Desde hace varios años recorre cada rincón de esta isla del Pacífico panameño, aprendiendo de sus aguas, sus corales y de la vida silvestre que la rodea. Su conexión con los delfines y las ballenas nace del respeto profundo que siente por ellos y de la pasión por compartir ese mundo con quienes lo visitan.
+                </p>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-2">
+                  Su misión es mostrar la belleza real de Otoque y despertar en cada persona el amor por la naturaleza, enseñando a observarla, entenderla y cuidarla. José combina conocimiento, dedicación y una experiencia auténtica de un guía local que vive y respira el mar. Cada tour que lidera no es solo un paseo, sino un encuentro con la vida marina, con la historia de la isla y con los secretos que solo alguien que ha crecido entre estas aguas puede compartir.
+                </p>
               </div>
-              <div className="flex flex-col justify-between space-y-6">
-                <div className="space-y-4">
-                  <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
-                    Guía local de confianza
-                  </span>
-                  <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                    Conoce a José Valverde
-                  </h2>
-                  <p className="text-base sm:text-lg text-[#F2E9DA] font-medium leading-relaxed">
-                    Guía local de Isla Otoque y creador de Cocostourpty enfocado en experiencias marinas y avistamiento de cetáceos y aves.
-                  </p>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-2">
-                    Desde hace varios años recorre cada rincón de esta isla del Pacífico panameño, aprendiendo de sus aguas, sus corales y de la vida silvestre que la rodea. Su conexión con los delfines y las ballenas nace del respeto profundo que siente por ellos y de la pasión por compartir ese mundo con quienes lo visitan.
-                  </p>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed pt-2">
-                    Su misión es mostrar la belleza real de Otoque y despertar en cada persona el amor por la naturaleza, enseñando a observarla, entenderla y cuidarla. José combina conocimiento, dedicación y una experiencia auténtica de un guía local que vive y respira el mar. Cada tour que lidera no es solo un paseo, sino un encuentro con la vida marina, con la historia de la isla y con los secretos que solo alguien que ha crecido entre estas aguas puede compartir.
-                  </p>
-                </div>
 
-                <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-
-
-                  <button
-                    onClick={() => onOpenInquiry('Isla Otoque')}
-                    className="px-6 py-3.5 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg transition-colors shadow cursor-pointer active:scale-95"
-                  >
-                    {t.guide.cta}
-                  </button>
-                </div>
+              <div className="pt-4 border-t border-white/10 flex items-center justify-end">
+                <button
+                  onClick={() => onOpenInquiry('Isla Otoque')}
+                  className="px-6 py-3.5 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-lg transition-colors shadow cursor-pointer active:scale-95"
+                >
+                  {t.guide.cta}
+                </button>
               </div>
             </div>
           </div>

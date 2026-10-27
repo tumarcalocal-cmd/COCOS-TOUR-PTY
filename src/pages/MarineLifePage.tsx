@@ -35,7 +35,7 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
   const t = TRANSLATIONS[lang];
 
   const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
-  const whaleVideos = ['/videos/whales.mp4', '/videos/whales-2.mp4', '/videos/whales-3.mp4'];
+  const whaleVideos = ['/videos/whales.mp4', '/videos/whales-2.mp4', 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/whales-3.mp4'];
 
   const nextVideo = () => {
     setCurrentVideoIndex((prev) => (prev + 1) % whaleVideos.length);
@@ -159,12 +159,16 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
 
             <div className="lg:col-span-6 space-y-6">
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 aspect-4/3">
-                <img
-                  src={IMAGES.dolphins}
-                  alt="Delfines Manchados en el Pacífico de Panamá"
-                  referrerPolicy="no-referrer"
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
                   className="w-full h-full object-cover"
-                />
+                >
+                  <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/dolphins.mp4" type="video/mp4" />
+                </video>
               </div>
 
 

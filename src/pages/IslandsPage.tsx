@@ -60,8 +60,7 @@ export const IslandsPage: React.FC<IslandsPageProps> = ({
           className="absolute inset-0 h-full w-full object-cover pointer-events-none"
           style={{ objectFit: 'cover' }}
         >
-          <source src="/videos/hero-cocos.mp4" type="video/mp4" />
-          <source src="/videos/hero-canva.mp4" type="video/mp4" />
+          <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/hero-2.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/70 to-[#092E3B]/40 pointer-events-none" />
