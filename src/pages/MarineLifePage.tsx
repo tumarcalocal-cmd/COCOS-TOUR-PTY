@@ -171,7 +171,7 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
                   preload="auto"
                   className="w-full h-full object-cover"
                 >
-                  <source src="/videos/dolphins.mp4" type="video/mp4" />
+                  <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/dolphins.mp4" type="video/mp4" />
                 </video>
               </div>
 
