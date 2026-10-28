@@ -215,8 +215,8 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
   const handleRestaurantInquiry = () => {
     const isEs = lang === 'es';
     const msg = isEs
-      ? 'Hola, Cocos Tour PTY y Coco\'s Pub. Me gustaría consultar disponibilidad de mesa y atención en el restaurante.'
-      : 'Hello, Cocos Tour PTY & Coco\'s Pub. I would like to inquire about table availability and restaurant services.';
+      ? "Hola, Coco's Pub Bar. Me gustaría recibir información sobre el restaurante"
+      : "Hello, Coco's Pub Bar. I'd like more information about the restaurant";
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/50762893605?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
@@ -262,7 +262,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
               className="px-8 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
               <MessageCircle className="w-5 h-5" />
-              <span>{t.restaurantPage.ctaRestaurant}</span>
+              <span>{lang === 'es' ? 'CONTACTAR POR WHATSAPP' : 'CONTACT VIA WHATSAPP'}</span>
             </button>
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -352,7 +352,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
                   className="px-8 py-3.5 bg-[#092E3B] hover:bg-[#142126] text-white font-bold text-sm uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 text-[#12A8A3]" />
-                  <span>{t.restaurantPage.ctaRestaurant}</span>
+                  <span>{lang === 'es' ? 'CONTACTAR POR WHATSAPP' : 'CONTACT VIA WHATSAPP'}</span>
                 </button>
                 <a
                   href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -385,7 +385,7 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
               onClick={handleRestaurantInquiry}
               className="w-full sm:w-auto px-9 py-4 bg-[#12A8A3] hover:bg-[#16bfba] text-[#092E3B] font-bold text-sm sm:text-base uppercase tracking-wider rounded-lg shadow-xl cursor-pointer"
             >
-              {t.finalCta.whatsappBtn}
+              <span>{lang === 'es' ? 'CONTACTAR POR WHATSAPP' : 'CONTACT VIA WHATSAPP'}</span>
             </button>
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}

@@ -391,21 +391,21 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Data Strip with authentic values */}
-              <div className="pt-4 grid grid-cols-3 gap-4 text-slate-800 border-t border-slate-300/60">
+              <div className="pt-4 grid grid-cols-3 gap-4 text-slate-800 border-t border-slate-300/60 text-center">
                 <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#092E3B]">2.66 km²</div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">2.66 km²</div>
                   <div className="text-xs sm:text-sm text-slate-600 mt-1">
                     {lang === 'es' ? 'Superficie' : 'Land area'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#092E3B]">~350</div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">~350</div>
                   <div className="text-xs sm:text-sm text-slate-600 mt-1">
                     {lang === 'es' ? 'Habitantes' : 'Residents'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#092E3B]">2</div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">2</div>
                   <div className="text-xs sm:text-sm text-slate-600 mt-1">
                     {lang === 'es' ? 'Comunidades isleñas' : 'Island villages'}
                   </div>
