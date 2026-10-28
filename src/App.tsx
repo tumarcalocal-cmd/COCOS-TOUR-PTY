@@ -9,7 +9,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { InquiryModal } from './components/InquiryModal';
 import { VideoPlayerModal } from './components/VideoPlayerModal';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileBottomBar } from './components/MobileBottomBar';
 import { LegalModal } from './components/LegalModal';
 import { HomePage } from './pages/HomePage';
@@ -170,11 +169,7 @@ export default function App() {
         onOpenInquiry={() => handleOpenInquiry()}
       />
 
-      {/* Discrete Floating WhatsApp */}
-      <FloatingWhatsApp
-        lang={lang}
-        onOpenInquiry={() => handleOpenInquiry()}
-      />
+
 
       {/* Mobile Sticky Inquiry Bottom Bar */}
       <MobileBottomBar
