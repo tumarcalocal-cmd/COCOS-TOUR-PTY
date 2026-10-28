@@ -35,7 +35,11 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
   const t = TRANSLATIONS[lang];
 
   const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
-  const whaleVideos = ['/videos/whales.mp4', '/videos/whales-2.mp4', 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/whales-3.mp4'];
+  const whaleVideos = [
+    '/videos/whales.mp4',
+    '/videos/whales-2.mp4',
+    '/videos/whales-3.mp4'
+  ];
 
   const nextVideo = () => {
     setCurrentVideoIndex((prev) => (prev + 1) % whaleVideos.length);
@@ -58,7 +62,7 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
             preload="auto"
             className="w-full h-full object-cover"
           >
-            <source src="/videos/hero-specific.mp4" type="video/mp4" />
+            <source src={MEDIA_CONFIG.dolphinsVideo.videoUrl} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/55" />
         </div>
@@ -167,7 +171,7 @@ export const MarineLifePage: React.FC<MarineLifePageProps> = ({
                   preload="auto"
                   className="w-full h-full object-cover"
                 >
-                  <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/dolphins.mp4" type="video/mp4" />
+                  <source src="/videos/dolphins.mp4" type="video/mp4" />
                 </video>
               </div>
 

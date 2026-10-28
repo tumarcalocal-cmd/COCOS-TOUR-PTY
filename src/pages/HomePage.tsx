@@ -300,11 +300,11 @@ export const HomePage: React.FC<HomePageProps> = ({
           loop
           playsInline
           preload="auto"
-          poster="/images/hero.jpg"
+          poster="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/hero.jpg"
           className="absolute inset-0 h-full w-full object-cover pointer-events-none"
           style={{ objectFit: 'cover' }}
         >
-          <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/hero.mp4" type="video/mp4" />
+          <source src={heroVideo.videoUrl} type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/70 to-[#092E3B]/40 pointer-events-none" />
@@ -367,12 +367,12 @@ export const HomePage: React.FC<HomePageProps> = ({
               <span className="text-sm font-bold uppercase tracking-wider text-[#12A8A3]">
                 {lang === 'es' ? 'Historia, Tradición y Naturaleza' : 'History, Heritage & Nature'}
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight leading-snug">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#092E3B] tracking-tight leading-snug text-center">
                 {lang === 'es'
                   ? 'Isla Otoque: raíces indígenas y paraíso marino'
                   : 'Isla Otoque: indigenous roots & marine paradise'}
               </h2>
-              <div className="space-y-4 text-slate-800 leading-relaxed text-base sm:text-lg">
+              <div className="space-y-4 text-slate-800 leading-relaxed text-base sm:text-lg text-center">
                 <p>
                   {lang === 'es'
                     ? 'Una isla del Golfo de Panamá con raíces indígenas y una historia marcada por los caciques Careta, Tatalao y Estivá. Con sus 2.66 km², se divide en dos comunidades: Otoque Oriente y Otoque Occidente, donde viven cerca de 350 personas dedicadas a la pesca y al turismo local.'
@@ -390,24 +390,30 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </p>
               </div>
 
-              {/* Data Strip with authentic values */}
-              <div className="pt-4 grid grid-cols-3 gap-4 text-slate-800 border-t border-slate-300/60 text-center">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">2.66 km²</div>
-                  <div className="text-xs sm:text-sm text-slate-600 mt-1">
+              {/* Data Strip with authentic values - Centered and Improved Typography */}
+              <div className="pt-10 flex flex-wrap items-center justify-center gap-12 sm:gap-20 text-center border-t border-slate-300/60 mt-8">
+                <div className="flex flex-col items-center">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#092E3B] flex items-baseline">
+                    2.66 <span className="text-xl sm:text-2xl ml-1 font-bold">km²</span>
+                  </div>
+                  <div className="text-sm sm:text-base font-semibold text-[#12A8A3] mt-2 uppercase tracking-wider">
                     {lang === 'es' ? 'Superficie' : 'Land area'}
                   </div>
                 </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">~350</div>
-                  <div className="text-xs sm:text-sm text-slate-600 mt-1">
+                <div className="flex flex-col items-center">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#092E3B]">
+                    350
+                  </div>
+                  <div className="text-sm sm:text-base font-semibold text-[#12A8A3] mt-2 uppercase tracking-wider">
                     {lang === 'es' ? 'Habitantes' : 'Residents'}
                   </div>
                 </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#092E3B]">2</div>
-                  <div className="text-xs sm:text-sm text-slate-600 mt-1">
-                    {lang === 'es' ? 'Comunidades isleñas' : 'Island villages'}
+                <div className="flex flex-col items-center">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-[#092E3B]">
+                    2
+                  </div>
+                  <div className="text-sm sm:text-base font-semibold text-[#12A8A3] mt-2 uppercase tracking-wider">
+                    {lang === 'es' ? 'Comunidades' : 'Villages'}
                   </div>
                 </div>
               </div>
@@ -537,7 +543,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div>
                 <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
                   <img
-                    src={IMAGES.whales}
+                    src={IMAGES.dolphins}
                     alt="Delfines y Ballenas"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

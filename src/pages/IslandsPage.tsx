@@ -352,16 +352,11 @@ export const IslandsPage: React.FC<IslandsPageProps> = ({
             <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200/80 transition-all flex flex-col justify-between group">
               <div>
                 <div className="relative aspect-4/3 overflow-hidden bg-slate-900">
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
+                  <img
+                    src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/islote-estiva.jpg"
+                    alt="Islote Estiva"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  >
-                    <source src="https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/bona.mp4" type="video/mp4" />
-                  </video>
+                  />
                 </div>
                 <div className="p-6 space-y-3">
                   <div className="flex items-center gap-2 text-[#092E3B]">

@@ -226,12 +226,17 @@ export const RestaurantPage: React.FC<RestaurantPageProps> = ({
       {/* 1. Encabezado Visual Propio de Coco's Pub */}
       <section className="relative py-28 sm:py-36 bg-[#092E3B] text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src={IMAGES.restaurant}
-            alt="Coco's Pub Bar Restaurante en Punta Chame"
-            referrerPolicy="no-referrer"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={IMAGES.restaurant}
             className="w-full h-full object-cover"
-          />
+          >
+            <source src={MEDIA_CONFIG.restaurantVideo.videoUrl} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#092E3B] via-[#092E3B]/80 to-[#092E3B]/55" />
         </div>
 

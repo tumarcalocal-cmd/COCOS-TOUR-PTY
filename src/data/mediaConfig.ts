@@ -27,8 +27,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Vuelo de dron sobre las costas e islas del Pacífico panameño en Punta Chame y el archipiélago.',
       en: 'Drone flight over the coasts and islands of the Panamanian Pacific in Punta Chame and archipelago.',
     },
-    poster: '/images/hero.jpg',
-    videoUrl: '/videos/hero.mp4',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/hero.jpg',
+    videoUrl: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/hero.mp4',
     tag: {
       es: 'Vista Aérea Dron',
       en: 'Aerial Drone View',
@@ -45,8 +45,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Recorrido costero por Otoque Oriente y Occidente, sus aguas cristalinas, playas y vestigios históricos.',
       en: 'Coastal journey through Otoque Oriente and Occidente, pristine waters, beaches and historic relics.',
     },
-    poster: '/images/otoque.jpg',
-    videoUrl: 'https://www.canva.com/design/DAHZNxK5Yx0/NpCZ_nq1Kl4A-QwFTRGiHA/watch?embed',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque.jpg',
+    videoUrl: '/videos/snorkel.mp4',
     tag: {
       es: 'Islas y Cultura',
       en: 'Islands & Culture',
@@ -63,8 +63,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Acantilados volcánicos donde anidan miles de piqueros pardos, piqueros de patas azules y fragatas.',
       en: 'Volcanic cliffs nesting thousands of brown boobies, blue-footed boobies and frigatebirds.',
     },
-    poster: '/images/bona.jpg',
-    // videoUrl: '/videos/bona.mp4',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/bona.jpg',
+    videoUrl: '/videos/bona-2.mp4',
     tag: {
       es: 'Reserva Natural',
       en: 'Nature Sanctuary',
@@ -81,8 +81,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Manadas de delfines del Pacífico surcando las olas frente a la proa con libertad y alegría.',
       en: 'Pods of Pacific spotted dolphins gliding alongside the bow in open Pacific waters.',
     },
-    poster: '/images/dolphins.jpg',
-    // videoUrl: '/videos/dolphins.mp4',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/dolphins.jpg',
+    videoUrl: '/videos/dolphins.mp4',
     tag: {
       es: 'Fauna Marina',
       en: 'Marine Wildlife',
@@ -99,8 +99,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'Majestuoso salto y aletazos de ballenas jorobadas migratorias en las cálidas aguas del Golfo de Panamá.',
       en: 'Majestic breeching and tail flukes of migratory humpback whales in the warm Gulf of Panama waters.',
     },
-    poster: '/images/whales.jpg',
-    videoUrl: 'https://www.canva.com/design/DAHZNzA83c4/uLZQxyJAzyhiYTIemDpjPQ/watch?embed',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/whales.jpg',
+    videoUrl: '/videos/whales.mp4',
     tag: {
       es: 'Avistamiento de Temporada',
       en: 'Seasonal Whale Watching',
@@ -117,8 +117,8 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       es: 'El rincón perfecto en Punta Chame para relajarse frente a la brisa marina y refrescarse tras el recorrido.',
       en: 'The beachside spot in Punta Chame to unwind by the sea breeze and enjoy fresh refreshments.',
     },
-    poster: '/images/restaurant.jpg',
-    // videoUrl: '/videos/restaurant.mp4',
+    poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/restaurant.jpg',
+    videoUrl: '/videos/restaurant.mp4',
     tag: {
       es: 'Gastronomía y Relax',
       en: 'Dining & Relax',
@@ -127,11 +127,11 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
 };
 
 export const IMAGES = {
-  hero: '/images/hero.jpg',
-  otoque: '/images/otoque.jpg',
-  bona: '/images/bona.jpg',
-  dolphins: '/images/dolphins.jpg',
-  whales: '/images/whales.jpg',
-  restaurant: '/images/restaurant.jpg',
-  guide: '/images/guide.jpg',
+  hero: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/hero.jpg',
+  otoque: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/otoque.jpg',
+  bona: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/bona.jpg',
+  dolphins: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/dolphins.jpg',
+  whales: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/whales.jpg',
+  restaurant: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/restaurant.jpg',
+  guide: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/guide.jpg',
 };
