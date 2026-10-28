@@ -82,7 +82,7 @@ export const MEDIA_CONFIG: Record<string, VideoItem> = {
       en: 'Pods of Pacific spotted dolphins gliding alongside the bow in open Pacific waters.',
     },
     poster: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/images/dolphins.jpg',
-    videoUrl: '/videos/dolphins.mp4',
+    videoUrl: 'https://tumarcalocal-cmd.github.io/COCOS-TOUR-PTY/videos/dolphins.mp4',
     tag: {
       es: 'Fauna Marina',
       en: 'Marine Wildlife',
